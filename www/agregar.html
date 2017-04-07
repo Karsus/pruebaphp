@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div class="titulo"><h1>Agregar</h1></div>
+
+  <form id="agregarf">
+
+    <div class="container">
+      <div class="inp"><label><b>Usuario</b></label>
+      <input id="user" type="number" placeholder="Ingrese Usuario" name="user" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')"></div>
+
+      <div class="inp"><label><b>Correo</b></label>
+      <input id="email" type="number" placeholder="Ingrese Correo" name="email" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')"></div>
+
+      <button id="agregar" type="submit" value="Save">Agregar</button>
+    </div>
+      <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+  </form>
+
+</div>
+
+    <script type="text/javascript" src="js/jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="js/final.js"></script>
+</body>
+</html>

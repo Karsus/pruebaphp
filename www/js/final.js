@@ -2,7 +2,7 @@ $(document).ready(function()
  {
  var cont = 0;
  	console.log("inicio final.js");
- var url="http://74.52.53.205/~portalvalparaiso/php/mostrar.php";
+ var url="http://localhost/pruebaphp/www/mostrar.php";
  console.log("entro a url");
  $.getJSON(url,function(result){
  console.log(result);
@@ -16,3 +16,24 @@ $(document).ready(function()
  });
 
 //169.254.51.52
+//localhost/pruebaphp/www/
+
+
+$('#agregarf').submit(function(){
+    var postData = $('#agregarf').serialize();
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'http://localhost/pruebaphp/www/agregar.php',
+        success: function(data){
+            console.log(data);
+            alert('Se subio con exito');
+            window.location.replace("index.html");
+        },
+        error: function(data){
+            console.log(data);
+            alert('Hubo un error');
+        }
+    });
+    return false;
+});

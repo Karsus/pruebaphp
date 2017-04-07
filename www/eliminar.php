@@ -6,9 +6,9 @@
 	$user = $_POST['user'];
 	$email = $_POST['email'];
 
-	$sql = "INSERT INTO usuarios /*(Nombre de la Tabla) */(username, email) VALUES ('$user', '$email')";
+	$sql = "DELETE * FROM usuarios WHERE username = '' AND email = '' ";
 
-	mysql_query($sql) or die ("No pude seleccionar".mysql_error());
+	mysql_query($sql) or die ("No se pudo eliminar".mysql_error());
 
 	mysql_close($con);
 ?>

@@ -1,16 +1,15 @@
 $(document).ready(function()
  {
- var cont = 0;
  	console.log("inicio final.js");
  var url="http://localhost/pruebaphp/www/mostrar.php";
  console.log("entro a url");
  $.getJSON(url,function(result){
  console.log(result);
  $.each(result, function(i, field){
- var usuario=field.username;
- var correo=field.email;
- cont = cont+1;
- $("#lista").append("<div><p>usuario "+ cont+"</p><p>" + usuario + "</p><p>" + correo + "</p></div>");
+ var usuario =field.username;
+ var correo =field.email;
+ console.log(i);
+ $("#lista").append("<div id=\"" + i +"\" ><p>usuario "+ i+"</p><p>" + usuario + "</p><p>" + correo + "</p><a id=\"" + i + "\" onclick=\"edita(this.id)\"> Modificar </a><a id=\"" + i + "\" onclick=\"elimina(this.id)\"> Eliminar </a></div>");
  });
  });
  });
@@ -37,3 +36,13 @@ $('#agregarf').submit(function(){
     });
     return false;
 });
+
+
+function edita(id){
+	
+}
+
+
+function elimina(id){
+	
+}

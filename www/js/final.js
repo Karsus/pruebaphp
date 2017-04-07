@@ -2,7 +2,7 @@ $(document).ready(function()
  {
  var cont = 0;
  	console.log("inicio final.js");
- var url="http://localhost/Praxis/www/mostrar.php";
+ var url="http://74.52.53.205/~portalvalparaiso/php/mostrar.php";
  console.log("entro a url");
  $.getJSON(url,function(result){
  console.log(result);

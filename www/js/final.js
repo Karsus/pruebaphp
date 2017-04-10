@@ -1,11 +1,11 @@
 $(document).ready(function()
  {
- var url="http://localhost/pruebaphp/www/mostrar.php";
+ var url="http://74.52.53.205/~portalvalparaiso/php/mostrar.php";
  $.getJSON(url,function(result){
  $.each(result, function(i, field){
  var usuario =field.username;
  var correo =field.email;
- $("#lista").append("<div id=\"" + usuario +"\" ><div id=\""+i+"\">Usuario "+i+"<div class=\"usuario\" value=\"" + usuario + "\">" + usuario + "</div><p class=\"correo\" value=\"" + correo + "\">" + correo + "</p><button id=\"" + usuario + "\" onclick=\"edita(this.id, "+i+")\"> Editar </button><button id=\"" + usuario + "\" onclick=\"elimina(this.id)\"> Eliminar </button></div></div>");
+ $("#lista").append("<div id=\"" + usuario +"\" ><div>Usuario "+(i+1)+"<div class=\"usuario\" value=\"" + usuario + "\">" + usuario + "</div><p class=\"correo\" value=\"" + correo + "\">" + correo + "</p><button id=\"" + usuario + "\" onclick=\"edita(this.id)\"> Editar </button><button id=\"" + usuario + "\" onclick=\"elimina(this.id)\"> Eliminar </button></div></div>");
  });
  });
  });
@@ -19,7 +19,7 @@ $('#agregarf').submit(function(){
     $.ajax({
         type: 'POST',
         data: postData,
-        url: 'http://localhost/pruebaphp/www/agregar.php',
+        url: 'http://74.52.53.205/~portalvalparaiso/php/agregar.php',
         success: function(data){
             console.log(data);
             //alert('Se subio con exito');
@@ -37,7 +37,7 @@ $('#editarf').submit(function(){
     var updData = $('#editarf').serialize();
     $.ajax({
         type: 'POST',
-        url: 'http://localhost/pruebaphp/www/editar.php',
+        url: 'http://74.52.53.205/~portalvalparaiso/php/editar.php',
         data: updData,
         success: function(data){
             //alert('Se edito con exito');
@@ -55,7 +55,7 @@ function elimina(user){
     var del_user = user;
     $.ajax({
         type: 'POST',
-        url: 'http://localhost/pruebaphp/www/eliminar.php',
+        url: 'http://74.52.53.205/~portalvalparaiso/php/eliminar.php',
         data:{'del_user':del_user},
         success: function(data){
             //alert('Se elimino con exito');
@@ -69,7 +69,7 @@ function elimina(user){
     return false;
 }
 
-function edita(user, num){
+function edita(user){
     var usuarioed = $("#"+user+ " .usuario").text();
     var correoed = $("#"+user+ " .correo").text();
     $('#user').val(usuarioed);

@@ -76,6 +76,7 @@ function edita(user, num){
     $('#email').val(correoed);
     $('#userp').val(usuarioed);
     $('#emailp').val(correoed);
+    document.getElementById("editarf").style.display = "block";
     window.scrollTo(0,document.body.scrollHeight);
 }
 

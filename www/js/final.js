@@ -1,15 +1,11 @@
 $(document).ready(function()
  {
- 	console.log("inicio final.js");
  var url="http://localhost/pruebaphp/www/mostrar.php";
- console.log("entro a url");
  $.getJSON(url,function(result){
- console.log(result);
  $.each(result, function(i, field){
  var usuario =field.username;
  var correo =field.email;
- console.log(i);
- $("#lista").append("<div id=\"" + i +"\" ><p>usuario "+ i+"</p><p>" + usuario + "</p><p>" + correo + "</p><a id=\"" + i + "\" onclick=\"edita(this.id)\"> Modificar </a><a id=\"" + i + "\" onclick=\"elimina(this.id)\"> Eliminar </a></div>");
+ $("#lista").append("<div id=\"" + usuario +"\" ><p>usuario "+ i+"</p><p>" + usuario + "</p><p>" + correo + "</p><a id=\"" + usuario + "\" class=\"modificar\" onclick=\"edita(this.id)\"href=\"\"> Modificar </a><button id=\"" + usuario + "\" onclick=\"elimina(this.id)\"> Eliminar </button></div>");
  });
  });
  });
@@ -37,12 +33,52 @@ $('#agregarf').submit(function(){
     return false;
 });
 
+//$(function(){
+$('.eliminar').click(function(){
+    var del_user = $(this).attr('id');
+    console.log(del_user);
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost/pruebaphp/www/eliminar.php',
+        data:{'del_user':del_user},
+        success: function(data){
+            console.log(data);
+            alert('Se elimino con exito');
+            window.location.replace("index.html");
+        },
+        error: function(data){
+            console.log(data);
+            alert('Hubo un error');
+        }
+    });
+    return false;
+});
+//});
+
+function elimina(user){
+    console.log(user);
+    var del_user = user;
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost/pruebaphp/www/eliminar.php',
+        data:{'del_user':del_user},
+        success: function(data){
+            console.log(data);
+            alert('Se elimino con exito');
+            window.location.replace("index.html");
+        },
+        error: function(data){
+            console.log(data);
+            alert('Hubo un error');
+        }
+    });
+    return false;
+}
 
 function edita(id){
 	
 }
 
 
-function elimina(id){
-	
-}
+//onclick=\"elimina(this.id)\" 
+

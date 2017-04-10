@@ -38,19 +38,35 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
+<!--     <link rel="stylesheet" type="text/css" href="css/index.css" />
+ -->    <title>App DB</title>
 </head>
 
 <body>
-    <h1>Usuarios</h1>
+<h1>Usuarios</h1>
 <div id="lista"></div>
 <a href="agregar.html"><button type="button">Agregar</button></a>
+
+<form id="editarf">
+
+    <div class="container">
+      <div class="inp"><label><b>Usuario</b></label>
+      <input id="user" type="number" placeholder="Ingrese Usuario" name="user" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')"></div>
+
+      <div class="inp"><label><b>Correo</b></label>
+      <input id="email" type="number" placeholder="Ingrese Correo" name="email" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')"></div>
+      <input hidden id="userp" type="number" placeholder="Ingrese Usuario" name="userp">
+        <input hidden id="emailp" type="number" placeholder="Ingrese Correo" name="emailp">
+
+      <button id="editarf" type="submit" value="Save">Editar</button>
+    </div>
+      <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+  </form>
+<button type="button" onclick="ediprueba()">Edicion</button>
     
     <script type="text/javascript" src="js/jquery-3.2.0.js"></script>
     <script type="text/javascript" src="js/final.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+<!--     <script type="text/javascript" src="cordova.js"></script>-->    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>

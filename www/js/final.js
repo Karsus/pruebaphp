@@ -5,7 +5,7 @@ $(document).ready(function()
  $.each(result, function(i, field){
  var usuario =field.username;
  var correo =field.email;
- $("#lista").append("<div id=\"" + usuario +"\" ><p>usuario "+ i+"</p><p>" + usuario + "</p><p>" + correo + "</p><a id=\"" + usuario + "\" class=\"modificar\" onclick=\"edita(this.id)\"href=\"\"> Modificar </a><button id=\"" + usuario + "\" onclick=\"elimina(this.id)\"> Eliminar </button></div>");
+ $("#lista").append("<div id=\"" + usuario +"\" ><div id=\""+i+"\">Usuario "+i+"<div class=\"usuario\" value=\"" + usuario + "\">" + usuario + "</div><p class=\"correo\" value=\"" + correo + "\">" + correo + "</p><button id=\"" + usuario + "\" onclick=\"edita(this.id, "+i+")\"> Editar </button><button id=\"" + usuario + "\" onclick=\"elimina(this.id)\"> Eliminar </button></div></div>");
  });
  });
  });
@@ -22,7 +22,7 @@ $('#agregarf').submit(function(){
         url: 'http://localhost/pruebaphp/www/agregar.php',
         success: function(data){
             console.log(data);
-            alert('Se subio con exito');
+            //alert('Se subio con exito');
             window.location.replace("index.html");
         },
         error: function(data){
@@ -33,17 +33,14 @@ $('#agregarf').submit(function(){
     return false;
 });
 
-//$(function(){
-$('.eliminar').click(function(){
-    var del_user = $(this).attr('id');
-    console.log(del_user);
+$('#editarf').submit(function(){
+    var updData = $('#editarf').serialize();
     $.ajax({
         type: 'POST',
-        url: 'http://localhost/pruebaphp/www/eliminar.php',
-        data:{'del_user':del_user},
+        url: 'http://localhost/pruebaphp/www/editar.php',
+        data: updData,
         success: function(data){
-            console.log(data);
-            alert('Se elimino con exito');
+            //alert('Se edito con exito');
             window.location.replace("index.html");
         },
         error: function(data){
@@ -53,18 +50,15 @@ $('.eliminar').click(function(){
     });
     return false;
 });
-//});
 
 function elimina(user){
-    console.log(user);
     var del_user = user;
     $.ajax({
         type: 'POST',
         url: 'http://localhost/pruebaphp/www/eliminar.php',
         data:{'del_user':del_user},
         success: function(data){
-            console.log(data);
-            alert('Se elimino con exito');
+            //alert('Se elimino con exito');
             window.location.replace("index.html");
         },
         error: function(data){
@@ -75,10 +69,15 @@ function elimina(user){
     return false;
 }
 
-function edita(id){
-	
+function edita(user, num){
+    var usuarioed = $("#"+user+ " .usuario").text();
+    var correoed = $("#"+user+ " .correo").text();
+    $('#user').val(usuarioed);
+    $('#email').val(correoed);
+    $('#userp').val(usuarioed);
+    $('#emailp').val(correoed);
+    window.scrollTo(0,document.body.scrollHeight);
 }
-
 
 //onclick=\"elimina(this.id)\" 
 

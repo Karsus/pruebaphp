@@ -43,29 +43,33 @@
 </head>
 
 <body>
-<h1>Usuarios</h1>
-<div id="lista"></div>
-<a href="agregar.html"><button type="button">Agregar</button></a>
+  <div class="titulo">
+    <h1>Log In</h1>
+  </div>
 
-<form hidden id="editarf">
+  <form id="login">
 
     <div class="container">
-      <div class="inp"><label><b>Usuario</b></label>
-      <input id="user" type="number" placeholder="Ingrese Usuario" name="user" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')"></div>
+      <div class="inp">
+        <label><b>Usuario</b></label>
+        <input id="user" type="number" placeholder="Ingrese Usuario" name="user" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')">
+      </div>
 
-      <div class="inp"><label><b>Correo</b></label>
-      <input id="email" type="number" placeholder="Ingrese Correo" name="email" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')"></div>
-      <input hidden id="userp" type="number" placeholder="Ingrese Usuario" name="userp">
-        <input hidden id="emailp" type="number" placeholder="Ingrese Correo" name="emailp">
+      <div class="inp">
+        <label><b>Contraseña</b></label>
+        <input id="email" type="number" placeholder="Ingrese Correo" name="email" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')">
+      </div>
 
-      <button id="editarf" type="submit" value="Save">Editar</button>
+      <button id="entrar" type="submit" value="Save">Entrar</button>
     </div>
       <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
   </form>
-    
+
     <script type="text/javascript" src="js/jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="js/loggedin.js"></script>
     <script type="text/javascript" src="js/final.js"></script>
-<!--     <script type="text/javascript" src="cordova.js"></script>-->    <script type="text/javascript" src="js/index.js"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>

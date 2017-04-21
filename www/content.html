@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+  <title></title>
 </head>
 <body>
+  <h1>Usuarios</h1>
+<div id="lista"></div>
+<a href="agregar.html"><button type="button">Agregar</button></a>
 
-<div class="titulo"><h1>Agregar</h1></div>
-
-  <form id="agregarf">
+<form hidden id="editarf">
 
     <div class="container">
       <div class="inp"><label><b>Usuario</b></label>
@@ -15,16 +16,19 @@
 
       <div class="inp"><label><b>Correo</b></label>
       <input id="email" type="number" placeholder="Ingrese Correo" name="email" required oninvalid="this.setCustomValidity('Rellene este campo')" oninput="setCustomValidity('')"></div>
+      <input hidden id="userp" type="number" placeholder="Ingrese Usuario" name="userp">
+        <input hidden id="emailp" type="number" placeholder="Ingrese Correo" name="emailp">
 
-      <button id="agregar" type="submit" value="Save">Agregar</button>
+      <button id="editarf" type="submit" value="Save">Editar</button>
     </div>
       <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
   </form>
-
-</div>
-<a href="content.html"><button type="button"> Cancelar </button></a>
+<button type="button" onclick="cerrarsesion()">Log Out</button>
 
     <script type="text/javascript" src="js/jquery-3.2.0.js"></script>
     <script type="text/javascript" src="js/final.js"></script>
+    <script type="text/javascript" src="js/mostrar.js"></script>
+    <script type="text/javascript" src="js/loggedout.js"></script>
+<!--     <script type="text/javascript" src="cordova.js"></script>-->
 </body>
 </html>

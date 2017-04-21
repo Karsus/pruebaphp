@@ -1,18 +1,28 @@
-$(document).ready(function()
- {
- var url="http://74.52.53.205/~portalvalparaiso/php/mostrar.php";
- $.getJSON(url,function(result){
- $.each(result, function(i, field){
- var usuario =field.username;
- var correo =field.email;
- $("#lista").append("<div id=\"" + usuario +"\" ><div>Usuario "+(i+1)+"<div class=\"usuario\" value=\"" + usuario + "\">" + usuario + "</div><p class=\"correo\" value=\"" + correo + "\">" + correo + "</p><button id=\"" + usuario + "\" onclick=\"edita(this.id)\"> Editar </button><button id=\"" + usuario + "\" onclick=\"elimina(this.id)\"> Eliminar </button></div></div>");
- });
- });
- });
-
 //169.254.51.52
 //localhost/pruebaphp/www/
 
+$('#login').submit(function(){
+    var postData = $('#login').serialize();
+    console.log(postData);
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'http://74.52.53.205/~portalvalparaiso/php/login.php',
+        success: function(data){
+            if (data != '')
+            {   
+                window.localStorage.setItem("usuario", data);
+                window.location.replace("content.html");
+            }
+            //alert('Se subio con exito');
+        },
+        error: function(data){
+            console.log(data);
+            alert('Hubo un error');
+        }
+    });
+    return false;
+});
 
 $('#agregarf').submit(function(){
     var postData = $('#agregarf').serialize();
@@ -23,7 +33,7 @@ $('#agregarf').submit(function(){
         success: function(data){
             console.log(data);
             //alert('Se subio con exito');
-            window.location.replace("index.html");
+            window.location.replace("content.html");
         },
         error: function(data){
             console.log(data);
@@ -41,7 +51,7 @@ $('#editarf').submit(function(){
         data: updData,
         success: function(data){
             //alert('Se edito con exito');
-            window.location.replace("index.html");
+            window.location.replace("content.html");
         },
         error: function(data){
             console.log(data);
@@ -51,6 +61,12 @@ $('#editarf').submit(function(){
     return false;
 });
 
+function cerrarsesion(){
+    window.localStorage.clear();
+    window.localStorage.setItem("usuario", "");
+    window.location.replace("index.html");
+}
+
 function elimina(user){
     var del_user = user;
     $.ajax({
@@ -59,7 +75,7 @@ function elimina(user){
         data:{'del_user':del_user},
         success: function(data){
             //alert('Se elimino con exito');
-            window.location.replace("index.html");
+            window.location.replace("content.html");
         },
         error: function(data){
             console.log(data);

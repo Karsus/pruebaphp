@@ -1,6 +1,6 @@
 <?php
-	include("db.php");
 	session_start();
+	include("db.php");
 	/*Datos*/
 	mysql_select_db($database, $con) or die ("Could not connect: " . mysql_error());
 
@@ -13,9 +13,10 @@
 
 	if($count == 1) {
          $_SESSION['login_user'] = $userl;
-         exit($_SESSION['login_user']);
+         $_SESSION['login_pass'] = $emaill;
+         exit($_SESSION['login_user']." ".$_SESSION['login_pass']);
       }else {
-         exit($error = "Tu Nombre de Usuario o Contraseña es invalido");
+         $error = "Tu Nombre de Usuario o Contraseña es invalido";
       }
 	mysql_close($con);
 ?>

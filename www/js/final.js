@@ -10,15 +10,18 @@ $('#login').submit(function(){
         url: 'http://74.52.53.205/~portalvalparaiso/php/login.php',
         success: function(data){
             if (data != '')
-            {   
-                window.localStorage.setItem("usuario", data);
+            {
+                window.localStorage.setItem("usuario", data.substr(0,data.indexOf(' ')));
+                window.localStorage.setItem("password", data.substr(data.indexOf(' ')+1));
                 window.location.replace("content.html");
+            }else{
+                alert('Usuario o contraseña incorrectos');
             }
             //alert('Se subio con exito');
         },
         error: function(data){
             console.log(data);
-            alert('Hubo un error');
+            alert('Hubo un error en la conexion');
         }
     });
     return false;
